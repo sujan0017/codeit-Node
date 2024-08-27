@@ -1,0 +1,22 @@
+{
+  "name": "node-codeit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon modules/http.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "Sujan bk",
+  "license": "ISC",
+  "description": "Node, MongDB, Express learn",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

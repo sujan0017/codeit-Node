@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Ramu Kaka",
+    "address": "Kalanki"
+  },
+  {
+    "id": 2,
+    "name": "Kanta Baii",
+    "address": "Kalimati"
+  },
+  {
+    "id": 3,
+    "name": "Ram Laal",
+    "address": "Patan"
+  },
+  {
+    "id": 4,
+    "name": "Gopal Rai",
+    "address": "Gangabu"
+  }
+]

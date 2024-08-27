@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "title": "Saiya hogaye bhaia",
+    "content": "Content details of Saiya hogaye bhaia "
+  },
+  {
+    "id": 2,
+    "userId": 1,
+    "title": "Saiya hogaye bhaia dubara",
+    "content": "Content details of Saiya hogaye bhaia dubara "
+  },
+  {
+    "id": 3,
+    "userId": 2,
+    "title": "Kaala Naag",
+    "content": "Content details of Kaala naag in the jungle "
+  }
+]
