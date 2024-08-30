@@ -17,3 +17,7 @@ import url from "url";
 
 // const ___filename = url.fileURLToPath(import.meta.url);
 // console.log(___filename);
+
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
