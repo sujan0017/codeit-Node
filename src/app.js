@@ -1,18 +1,23 @@
 import express from "express";
 import dotenv from "dotenv";
 import products from "./routes/products.js";
+import auth from "./routes/auth.js";
 import bodyParser from "body-parser";
 import connectDB from "./database.js";
-
+import cookieParser from "cookie-parser";
+import logger from "./middleware/logger.js";
 
 const app = express();
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 dotenv.config();
 
 connectDB();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(logger)
+app.use(cookieParser())
 
 const PORT = process.env.PORT;
 
@@ -26,6 +31,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", products);
+
+app.use("/api/auth", auth);
 
 app.listen(PORT, () => {
   console.log(`Server running in port ${PORT}....`);

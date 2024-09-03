@@ -1,0 +1,20 @@
+import jwt from "jsonwebtoken";
+function auth(req, res, next) {
+  const cookie = req.headers.cookie;
+
+  if (!cookie) return res.status(401).send("Unauthorized");
+
+  const authToken = cookie.split("=")[1];
+  
+  if (!authToken) return res.send("Auth token is undefined.");
+
+  jwt.verify(authToken, process.env.JWT_SECRET, function (error, data) {
+    if (error) {
+      return res.status(401).send("Unauthorized.");
+    }
+    req.user = data;
+    next();
+  });
+}
+
+export default auth;
