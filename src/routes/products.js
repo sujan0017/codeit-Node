@@ -7,12 +7,12 @@ import {
   getProductById,
   updateProduct,
 } from "../controllers/productsController.js";
-import logger from "../middleware/logger.js";
 import auth from "../middleware/auth.js";
+import roleBaseAuth from "../middleware/roleBaseAuth.js";
 
 const router = express.Router();
 
-router.get("/", logger, getAllProducts);
+router.get("/", getAllProducts);
 
 router.get("/:id", getProductById);
 
@@ -20,6 +20,6 @@ router.post("/", auth, addProduct);
 
 router.put("/:id", auth, updateProduct);
 
-router.delete("/:id", auth, deleteProduct);
+router.delete("/:id", [auth, roleBaseAuth("ADMIN")], deleteProduct);
 
 export default router;

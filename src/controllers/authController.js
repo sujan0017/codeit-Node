@@ -18,11 +18,11 @@ const register = async (req, res) => {
   try {
     const user = await authService.register(data);
 
-    const authToken = createAuthToken(user);
+    const token = createAuthToken(user);
 
-    res.cookie("authToken", authToken, { httpOnly: true });
+    res.cookie("authToken", token, { httpOnly: true });
 
-    res.status(201).json({ ...user, authToken });
+    res.status(201).json({ ...user, token });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -34,14 +34,20 @@ const login = async (req, res) => {
   try {
     const user = await authService.login(data);
 
-    const authToken = createAuthToken(user);
+    const token = createAuthToken(user);
 
-    res.cookie("authToken", authToken, { httpOnly: true });
+    res.cookie("authToken", token, { httpOnly: true });
 
-    res.status(201).json({ ...user, authToken });
+    res.status(201).json({ ...user, token });
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
 
-export { register, login };
+const logout = (req, res) => {
+  res.clearCookie("authToken");
+
+  res.json({ status: "Ok", });
+};
+
+export { register, login, logout };
