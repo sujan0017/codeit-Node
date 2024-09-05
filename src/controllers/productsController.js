@@ -26,8 +26,9 @@ const getProductById = async (req, res) => {
 
 const addProduct = async (req, res) => {
   const data = req.body;
-
   const userId = req.user.id;
+
+
 
   if (!data.name) return res.status(422).send("Product name is required");
   if (!data.price) return res.status(422).send("Product price is required");
@@ -78,10 +79,30 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const getCategories = async (req, res)=> {
+  try {
+    const categories = await productService.getCategories()
+    res.json(categories)
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
+
+const getTotalProducts = async (req, res)=>{
+  try {
+    const total = await productService.getTotalProducts()
+    res.json(total)
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
+
 export {
   getAllProducts,
   getProductById,
   addProduct,
   updateProduct,
   deleteProduct,
+  getCategories,
+  getTotalProducts
 };

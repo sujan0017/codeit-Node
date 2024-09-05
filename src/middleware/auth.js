@@ -1,11 +1,18 @@
 import jwt from "jsonwebtoken";
+
 function auth(req, res, next) {
-  const cookie = req.headers.cookie;
+  const authHeader = req.headers.authorization;
+  let authToken;
 
-  if (!cookie) return res.status(401).send("Unauthorized");
+  if (authHeader && authHeader.startsWith("Bearer ")) {
+    authToken = authHeader.split(" ")[1];
+  } else {
+    const cookie = req.headers.cookie;
+    if (!cookie) return res.status(401).send("Unauthorized");
 
-  const authToken = cookie.split("=")[1];
-  
+    authToken = cookie.split("=")[1];
+  }
+
   if (!authToken) return res.send("Auth token is undefined.");
 
   jwt.verify(authToken, process.env.JWT_SECRET, function (error, data) {
