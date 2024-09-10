@@ -7,7 +7,12 @@ const getAllProducts = async (query) => {
   const page = query?.page || 1;
   const offset = (page - 1) * limit;
 
-  return await Product.find(filters).limit(limit).sort(sort).skip(offset);
+  const customQuery = Object.entries(filters).reduce((acc, [key, value]) => {
+    const result = { ...acc, [key]: new RegExp(value, "i") };
+    return result;
+  }, {});
+
+  return await Product.find(customQuery).limit(limit).sort(sort).skip(offset);
 };
 const getProductsById = async (id) => {
   return await Product.findById(id);
