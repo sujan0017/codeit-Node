@@ -1,5 +1,5 @@
 {
-  "name": "node-codeit",
+  "name": "nodejs",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -25,4 +25,3 @@
     "mongoose": "^8.6.0"
   }
 }
-git
