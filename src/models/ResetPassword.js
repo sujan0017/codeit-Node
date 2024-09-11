@@ -12,7 +12,7 @@ const resetPasswordSchema = new mongoose.Schema({
   },
   expiresAt: {
     type: Date,
-    default: Date.now() + 360000, // 1 hour token time to 
+    default: Date.now() + 360000, // 1 hour token time to expire in milliseconds
   },
 });
 
