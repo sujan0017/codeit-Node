@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
   cors({
-    origin: process.env.APP_URL,
+    origin: "*", // change to this temporarily
   }),
 );
 
