@@ -16,9 +16,6 @@ connectDB();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(logger);
-app.use(cookieParser());
-
 app.use(
   cors({
     origin: [
@@ -29,6 +26,9 @@ app.use(
     credentials: true,
   }),
 );
+
+app.use(logger);
+app.use(cookieParser());
 
 const PORT = process.env.PORT;
 
