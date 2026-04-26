@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import connectDB from "./database.js";
 import cookieParser from "cookie-parser";
 import logger from "./middleware/logger.js";
+import cors from "cors";
 
 const app = express();
 
@@ -18,12 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:5173",
-      process.env.APP_URL,
-    ],
-    credentials: true,
+    origin: process.env.APP_URL,
   }),
 );
 
