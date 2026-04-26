@@ -13,11 +13,17 @@ dotenv.config();
 
 connectDB();
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(logger)
-app.use(cookieParser())
+app.use(logger);
+app.use(cookieParser());
+
+app.use(
+  cors({
+    origin: process.env.APP_URL,
+  }),
+);
 
 const PORT = process.env.PORT;
 
@@ -25,7 +31,7 @@ app.get("/", (req, res) => {
   //   res.send("Home Pages");
   res.json({
     appName: "nodejs-essential",
-    version: "1.0.0",
+    version: process.env.VERSION,
     port: PORT,
   });
 });
